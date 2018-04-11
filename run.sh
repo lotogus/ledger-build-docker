@@ -3,7 +3,7 @@ echo "Provisioning virtual machine..."
 echo "Installing Utilities"
 dpkg --add-architecture i386
 apt-get update  > /dev/null
-apt-get install git curl python-dev python-pip python-pil python-setuptools zlib1g-dev libjpeg-dev libudev-dev build-essential libusb-1.0-0-dev -y > /dev/null
+apt-get install git curl udev python-dev python-pip python-pil python-setuptools zlib1g-dev libjpeg-dev libudev-dev build-essential libusb-1.0-0-dev -y > /dev/null
 apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 libc6-dev-i386 wget gcc-arm-none-eabi libc6-dev-i386 -y > /dev/null
 pip install --upgrade setuptools
 pip install ledgerblue
@@ -32,7 +32,7 @@ git checkout tags/nanos-1314
 cd /opt/bolos/
 
 echo "finetuning rights for usb access"
-wget -q -O - https://www.ledgerwallet.com/support/add_udev_rules.sh | bash
+wget -q -O - https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh | bash
 
 echo "Setting up bash profile"
 echo "" >> /root/.bashrc
